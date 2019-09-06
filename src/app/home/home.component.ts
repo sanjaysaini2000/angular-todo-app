@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { AddItemEventArgs } from "./../navbar/navbar.component";
+import { Component, Input } from "@angular/core";
 
 @Component({
-  selector: 'home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: "todo-home",
+  templateUrl: "./home.component.html",
+  styleUrls: ["./home.component.css"]
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
+  constructor() {}
+  items: AddItemEventArgs;
 
-  constructor() { }
-
-  ngOnInit() {
+  onAddItem(eventArgs: AddItemEventArgs) {
+    this.items = eventArgs;
   }
-
 }

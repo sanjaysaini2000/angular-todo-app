@@ -1,15 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Output, EventEmitter } from "@angular/core";
+
+export interface AddItemEventArgs {
+  item: string[];
+}
 
 @Component({
-  selector: 'navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  selector: "todo-navbar",
+  templateUrl: "./navbar.component.html",
+  styleUrls: ["./navbar.component.css"]
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent {
+  items = [];
+  @Output("addItem") addItem = new EventEmitter();
 
-  constructor() { }
-
-  ngOnInit() {
+  onAddItem(item) {
+    this.items.push(item.value);
+    this.addItem.emit(this.items);
+    item.value = "";
   }
-
 }
