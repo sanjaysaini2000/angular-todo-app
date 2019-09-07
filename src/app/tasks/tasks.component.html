@@ -1,10 +1,20 @@
 <table class="table table-bordered">
   <tr *ngFor="let task of tasks" [class.table-dark]="task.isComplete">
-    <td [class.strike]="task.isComplete">{{ task.name }}</td>
     <td>
-      <a (click)="onStatuChange(task)">{{
-        task.isComplete ? "Crossed" : "Uncrossed"
-      }}</a>
+      <div [hidden]="!task.isComplete" [class.strike]="task.isComplete">
+        {{ task.name }}
+      </div>
+      <div [hidden]="task.isComplete">
+        <a [routerLink]="['/task', task.id]">{{ task.name }}</a>
+      </div>
+    </td>
+    <td>
+      <div
+        (click)="onStatuChange(task)"
+        style="text-decoration-line: underline; cursor: pointer;"
+      >
+        {{ task.isComplete ? "Crossed" : "Uncrossed" }}
+      </div>
     </td>
     <td>
       <button

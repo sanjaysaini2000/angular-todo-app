@@ -1,3 +1,4 @@
+import { DataService } from "./../data.service";
 import { AddItemEventArgs } from "./../navbar/navbar.component";
 import { Component, Input, Output, EventEmitter } from "@angular/core";
 
@@ -11,16 +12,19 @@ export class TasksComponent {
   @Output("deleteItemMessage") deleteItemMessage = new EventEmitter();
   @Output("itemStatusChangeMessage")
   itemStatusChangeMessage = new EventEmitter();
-
   todo: AddItemEventArgs;
-
   isCrossed = false;
   index;
+
+  constructor(private data: DataService) {}
+
   onStatuChange(task) {
     this.isCrossed = !this.isCrossed;
     this.todo = task;
     this.todo.isComplete = this.isCrossed;
     this.tasks[this.tasks.indexOf(task)] = this.todo;
+    this.data.updateTask(this.tasks);
+
     let msg = this.isCrossed
       ? this.todo.name + " is completed successfully..."
       : this.todo.name + " is not completed yet...";
@@ -29,6 +33,7 @@ export class TasksComponent {
   onDelete(task) {
     this.index = this.tasks.indexOf(task);
     this.tasks.splice(this.index, 1);
+    this.data.updateTask(this.tasks);
     this.deleteItemMessage.emit(task.name + " is deleted successfully...");
   }
 }
