@@ -7,6 +7,8 @@ import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { TaskComponent } from './task/task.component';
+import { MessageComponent } from './message/message.component';
+import { UpdatetaskComponent } from './updatetask/updatetask.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { TaskComponent } from './task/task.component';
     HomeComponent,
     NavbarComponent,
     TasksComponent,
-    TaskComponent
+    TaskComponent,
+    MessageComponent,
+    UpdatetaskComponent
   ],
   imports: [
     BrowserModule,

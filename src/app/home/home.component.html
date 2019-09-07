@@ -1,2 +1,12 @@
-<todo-navbar (addItem)="onAddItem($event)"></todo-navbar>
-<todo-tasks [tasks]="items"></todo-tasks>
+<todo-navbar
+  (addItemMessage)="onItemMessage($event)"
+  (addItem)="onAddItem($event)"
+></todo-navbar>
+<div class="container">
+  <todo-message [message]="alert"></todo-message>
+  <todo-tasks
+    (deleteItemMessage)="onItemMessage($event)"
+    (itemStatusChangeMessage)="onItemMessage($event)"
+    [tasks]="items"
+  ></todo-tasks>
+</div>

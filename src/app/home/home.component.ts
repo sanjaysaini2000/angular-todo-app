@@ -7,10 +7,15 @@ import { Component, Input } from "@angular/core";
   styleUrls: ["./home.component.css"]
 })
 export class HomeComponent {
-  constructor() {}
   items: AddItemEventArgs;
+  alert;
 
   onAddItem(eventArgs: AddItemEventArgs) {
     this.items = eventArgs;
+    //this.alert = "added";
+  }
+
+  onItemMessage(mgs) {
+    this.alert = mgs;
   }
 }

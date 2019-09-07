@@ -1,5 +1,19 @@
-<ul>
-  <li *ngFor="let task of tasks">
-    {{ task }}
-  </li>
-</ul>
+<table class="table table-bordered">
+  <tr *ngFor="let task of tasks" [class.table-dark]="task.isComplete">
+    <td [class.strike]="task.isComplete">{{ task.name }}</td>
+    <td>
+      <a (click)="onStatuChange(task)">{{
+        task.isComplete ? "Crossed" : "Uncrossed"
+      }}</a>
+    </td>
+    <td>
+      <button
+        (click)="onDelete(task)"
+        class="btn btn-outline-dark my-2 my-sm-0"
+        type="submit"
+      >
+        Delete
+      </button>
+    </td>
+  </tr>
+</table>
