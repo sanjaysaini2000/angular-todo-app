@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Download
 
-Download the code in a folder and Run npm install in that folder to install all the dependencies.
+Download and unzip the code zip file then goto the unzip folder(angular-todo-app-master) and Run `npm install` to install all the dependencies.
 
 ## Development server
 
