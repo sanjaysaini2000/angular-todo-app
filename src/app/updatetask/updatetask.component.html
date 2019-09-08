@@ -20,10 +20,11 @@
   <table class="table table-bordered">
     <tr>
       <td>
-        <input type="text" [value]="itemId" />
+        <input type="text" [(ngModel)]="itemName" />
       </td>
       <td>
         <button
+          [disabled]="itemName === ''"
           (click)="onUpdate()"
           class="btn btn-outline-dark my-2 my-sm-0"
           type="submit"

@@ -1,6 +1,7 @@
 import { DataService } from "./data.service";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
+import { FormsModule } from "@angular/forms";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -19,7 +20,7 @@ import { UpdatetaskComponent } from "./updatetask/updatetask.component";
     MessageComponent,
     UpdatetaskComponent
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [DataService],
   bootstrap: [AppComponent]
 })

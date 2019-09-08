@@ -5,7 +5,8 @@ import { UpdatetaskComponent } from "./updatetask/updatetask.component";
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
-  { path: "task/:id", component: UpdatetaskComponent }
+  { path: "task/:id", component: UpdatetaskComponent },
+  { path: ":old/:new", component: HomeComponent }
 ];
 
 @NgModule({

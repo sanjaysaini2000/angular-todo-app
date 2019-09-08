@@ -1,3 +1,4 @@
+import { ActivatedRoute } from "@angular/router";
 import { AddItemEventArgs } from "./../navbar/navbar.component";
 import { Component, Input, OnInit } from "@angular/core";
 import { DataService } from "../data.service";
@@ -9,17 +10,29 @@ import { DataService } from "../data.service";
 })
 export class HomeComponent implements OnInit {
   items: AddItemEventArgs;
-  alert;
+  alert: string;
 
-  constructor(private data: DataService) {}
+  constructor(private data: DataService, private route: ActivatedRoute) {}
   ngOnInit(): void {
     this.data.task.subscribe(res => (this.items = res));
     this.data.updateTask(this.items);
+    this.onUpdateItem(
+      this.route.snapshot.paramMap.get("old"),
+      this.route.snapshot.paramMap.get("new")
+    );
   }
 
   onAddItem(eventArgs: AddItemEventArgs) {
     this.items = eventArgs;
     this.data.updateTask(this.items);
+  }
+
+  onUpdateItem(oldValue: string, newValue: string) {
+    if (oldValue != null && oldValue !== newValue) {
+      this.alert = oldValue + " is updated to " + newValue + " sucessfully...";
+    } else if (oldValue != null && oldValue === newValue) {
+      this.alert = oldValue + " is not updated...";
+    }
   }
 
   onItemMessage(mgs) {
