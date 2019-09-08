@@ -13,19 +13,17 @@ export class TasksComponent {
   @Output("itemStatusChangeMessage")
   itemStatusChangeMessage = new EventEmitter();
   todo: AddItemEventArgs;
-  isCrossed = false;
   index;
 
   constructor(private data: DataService) {}
 
   onStatuChange(task) {
-    this.isCrossed = !this.isCrossed;
     this.todo = task;
-    this.todo.isComplete = this.isCrossed;
+    this.todo.isComplete = !this.todo.isComplete;
     this.tasks[this.tasks.indexOf(task)] = this.todo;
     this.data.updateTask(this.tasks);
 
-    let msg = this.isCrossed
+    let msg = this.todo.isComplete
       ? this.todo.name + " is completed successfully..."
       : this.todo.name + " is not completed yet...";
     this.itemStatusChangeMessage.emit(msg);
