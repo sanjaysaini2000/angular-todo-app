@@ -9,7 +9,7 @@ import { DataService } from "../data.service";
   styleUrls: ["./home.component.css"]
 })
 export class HomeComponent implements OnInit {
-  items: AddItemEventArgs;
+  items: AddItemEventArgs[];
   alert: string;
 
   constructor(private data: DataService, private route: ActivatedRoute) {}
@@ -20,10 +20,13 @@ export class HomeComponent implements OnInit {
       this.route.snapshot.paramMap.get("old"),
       this.route.snapshot.paramMap.get("new")
     );
+    console.log("home oniti", this.items);
   }
 
   onAddItem(eventArgs: AddItemEventArgs) {
-    this.items = eventArgs;
+    this.items.push(eventArgs);
+    console.log("onadd", this.items);
+
     this.data.updateTask(this.items);
   }
 

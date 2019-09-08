@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from "@angular/core";
+import { Component, Output, EventEmitter, OnInit } from "@angular/core";
 
 export interface AddItemEventArgs {
   id: number;
@@ -11,21 +11,20 @@ export interface AddItemEventArgs {
   templateUrl: "./navbar.component.html",
   styleUrls: ["./navbar.component.css"]
 })
-export class NavbarComponent {
-  items: AddItemEventArgs[] = [];
+export class NavbarComponent implements OnInit {
+  ngOnInit(): void {
+    console.log("nav oninit...");
+  }
+  item: AddItemEventArgs;
   @Output("addItem") addItem = new EventEmitter();
   @Output("addItemMessage") addItemMessage = new EventEmitter();
 
-  onAddItem(item) {
-    if (item.value !== "") {
-      this.items.push({
-        id: Date.now(),
-        name: item.value,
-        isComplete: false
-      });
-      this.addItem.emit(this.items);
-      this.addItemMessage.emit(item.value + " is added successfully...");
-      item.value = "";
+  onAddItem(itemvalue) {
+    if (itemvalue.value !== "") {
+      this.item = { id: Date.now(), name: itemvalue.value, isComplete: false };
+      this.addItem.emit(this.item);
+      this.addItemMessage.emit(itemvalue.value + " is added successfully...");
+      itemvalue.value = "";
     }
   }
 }
