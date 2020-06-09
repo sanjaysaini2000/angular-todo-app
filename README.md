@@ -26,6 +26,10 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
+## Docker Support
+
+Docker image of this app is available at my docker Hub registory. You can pull the image from [angular-app](https://hub.docker.com/repository/docker/sanjaysaini2000/angular-app) repository.
+
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
